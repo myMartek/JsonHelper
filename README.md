@@ -66,3 +66,15 @@ for (int i = 0; i < json.get("dogs").size(); i++) {
   }
 }
 ```
+
+The cool thing is that you don't need to worry about non existing keys or indexes:
+
+```Java
+JsonHelper json = new JsonHelper(jsonContent);
+
+json.get("cats").at(0).get("name").stringValue(); // null
+json.get("dogs").at(99999).get("name").stringValue(); // null
+json.get("dogs").at(0).at(1).get("name").stringValue(); // null
+json.get("dogs").at(0).get("name").boolValue(); // null
+json.get("dogs").at(0).get("age").intValue(); // null
+```
