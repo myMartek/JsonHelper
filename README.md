@@ -67,7 +67,7 @@ for (JsonHelper dog: json.get("dogs")) {
 }
 ```
 
-Additionally you can use the basic iterator pattern in order to iterate over JsonObjects:
+Additionally you can use the basic iterator pattern in order to iterate over JsonObjects and a toString method which returns a JSON string:
 
 ```Java
 JsonHelper json = new JsonHelper(jsonContent);
@@ -75,6 +75,9 @@ JsonHelper json = new JsonHelper(jsonContent);
 for (Map.Entry<String, JsonHelper> element: json.entrySet()) {
   System.out.println("Key: " + element.getKey() + " Value: " + element.getValue());
 }
+
+System.out.println(json.toString()); // => "{ \"dogs\": ...
+System.out.println(json.get("dogs").get(0).get("name").toString()); // => Rex
 ```
 
 The cool thing is that you don't need to worry about non existing keys or indexes:
