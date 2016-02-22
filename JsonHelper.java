@@ -267,7 +267,7 @@ public class JsonHelper implements Iterable<JsonHelper> {
         return gson.toJson(element);
     }
 
-    public JsonHelperObjectIterator objectIterator() {
+    public JsonHelperObjectIterator entrySet() {
         return new JsonHelperObjectIterator();
     }
 
