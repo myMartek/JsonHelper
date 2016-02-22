@@ -57,13 +57,23 @@ As you can can see this is very complicated and not very readable. With my JsonH
 ```Java
 JsonHelper json = new JsonHelper(jsonContent);
 
-for (int i = 0; i < json.get("dogs").size(); i++) {
-  String name = json.get("dogs").at(i).get("name").stringValue();
-  String breed = json.get("dogs").at(i).get("breed").stringValue();
+for (JsonHelper dog: json.get("dogs")) {
+  String name = dog.get("name").stringValue();
+  String breed = dog.get("breed").stringValue();
   
   if (name != null && breed != null) {
     System.out.println("Name: " + name + " Breed: " + breed);
   }
+}
+```
+
+Additionally you can use the basic iterator pattern in order to iterate over JsonObjects:
+
+```Java
+JsonHelper json = new JsonHelper(jsonContent);
+
+for (Map.Entry<String, JsonHelper> element: json.entrySet()) {
+  System.out.println("Key: " + element.getKey() + " Value: " + element.getValue());
 }
 ```
 
@@ -77,4 +87,16 @@ json.get("dogs").at(99999).get("name").stringValue(); // null
 json.get("dogs").at(0).at(1).get("name").stringValue(); // null
 json.get("dogs").at(0).get("name").boolValue(); // null
 json.get("dogs").at(0).get("age").intValue(); // null
+
+for (JsonHelper dog: json.get("cats")) {
+  // not executed
+}
+
+for (Map.Entry<String, JsonHelper> element: json.get("dogs").entrySet()) {
+  // not executed
+}
+
+
 ```
+
+
