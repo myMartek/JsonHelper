@@ -82,11 +82,11 @@ The cool thing is that you don't need to worry about non existing keys or indexe
 ```Java
 JsonHelper json = new JsonHelper(jsonContent);
 
-json.get("cats").at(0).get("name").stringValue(); // null
-json.get("dogs").at(99999).get("name").stringValue(); // null
-json.get("dogs").at(0).at(1).get("name").stringValue(); // null
-json.get("dogs").at(0).get("name").boolValue(); // null
-json.get("dogs").at(0).get("age").intValue(); // null
+json.get("cats").get(0).get("name").stringValue(); // null
+json.get("dogs").get(99999).get("name").stringValue(); // null
+json.get("dogs").get(0).get(1).get("name").stringValue(); // null
+json.get("dogs").get(0).get("name").boolValue(); // null
+json.get("dogs").get(0).get("age").intValue(); // null
 
 for (JsonHelper dog: json.get("cats")) {
   // not executed
