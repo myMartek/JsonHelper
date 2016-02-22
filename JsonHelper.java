@@ -55,7 +55,7 @@ public class JsonHelper {
             return this;
         }
 
-        if (element.isJsonArray() && index < element.getAsJsonArray().size() && index > 0) {
+        if (element.isJsonArray() && index < element.getAsJsonArray().size() && index >= 0) {
             return new JsonHelper(element.getAsJsonArray().get(index));
         }
 
