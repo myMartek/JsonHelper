@@ -258,11 +258,7 @@ public class JsonHelper implements Iterable<JsonHelper> {
         return null;
     }
 
-    public String stringify() {
-        if (element == null) {
-            return null;
-        }
-
+    private String stringify() {
         Gson gson = new Gson();
         return gson.toJson(element);
     }
@@ -274,5 +270,18 @@ public class JsonHelper implements Iterable<JsonHelper> {
     @Override
     public Iterator<JsonHelper> iterator() {
         return new JsonHelperIterator();
+    }
+
+    @Override
+    public String toString() {
+        if (element == null) {
+            return null;
+        }
+
+        if (element.isJsonPrimitive()) {
+            return element.getAsJsonPrimitive().getAsString();
+        }
+
+        return stringify();
     }
 }
